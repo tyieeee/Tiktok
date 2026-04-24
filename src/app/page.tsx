@@ -21,61 +21,6 @@ import { ThemeToggle } from "@/components/theme-toggle";
 import { ScrollReveal } from "@/components/scroll-reveal";
 import { CountUp } from "@/components/count-up";
 
-// Floating feature icons orbiting around the hero — connected to the center via faint SVG lines.
-function FloatingIcons() {
-  const items = [
-    { Icon: Target, cls: "left-[6%] top-[14%] animate-float", delay: "0s", rotate: "-rotate-6" },
-    { Icon: ShieldCheck, cls: "right-[8%] top-[8%] animate-float-slow", delay: "1.2s", rotate: "rotate-6" },
-    { Icon: BarChart3, cls: "right-[4%] top-[40%] animate-float", delay: "0.6s", rotate: "rotate-3" },
-    { Icon: MessageSquare, cls: "left-[4%] top-[46%] animate-float-slow", delay: "1.8s", rotate: "-rotate-3" },
-    { Icon: Star, cls: "left-[14%] bottom-[8%] animate-float", delay: "2.4s", rotate: "rotate-6" },
-    { Icon: TrendingUp, cls: "right-[14%] bottom-[10%] animate-float-slow", delay: "0.3s", rotate: "-rotate-6" },
-    { Icon: Bell, cls: "left-[28%] top-[4%] animate-float-slow hidden lg:block", delay: "0.9s", rotate: "rotate-3" },
-    { Icon: FileText, cls: "right-[28%] bottom-[4%] animate-float hidden lg:block", delay: "1.5s", rotate: "-rotate-3" },
-  ];
-
-  return (
-    <div aria-hidden className="pointer-events-none absolute inset-0 -z-0 overflow-hidden">
-      {/* Connector lines (SVG) from each icon toward the hero center */}
-      <svg className="absolute inset-0 h-full w-full" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0" />
-            <stop offset="50%" stopColor="hsl(var(--primary))" stopOpacity="0.3" />
-            <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0" />
-          </linearGradient>
-        </defs>
-        <g stroke="url(#lineGrad)" strokeWidth="1.2" strokeDasharray="4 6" fill="none">
-          <line x1="10%" y1="18%" x2="50%" y2="50%" />
-          <line x1="90%" y1="12%" x2="50%" y2="50%" />
-          <line x1="94%" y1="44%" x2="50%" y2="50%" />
-          <line x1="6%" y1="50%" x2="50%" y2="50%" />
-          <line x1="16%" y1="90%" x2="50%" y2="50%" />
-          <line x1="84%" y1="88%" x2="50%" y2="50%" />
-        </g>
-      </svg>
-
-      {/* Icon badges */}
-      {items.map(({ Icon, cls, delay, rotate }, i) => (
-        <div
-          key={i}
-          className={`absolute ${cls} ${rotate}`}
-          style={{ animationDelay: delay }}
-        >
-          <div className="relative">
-            {/* pulsing halo */}
-            <span className="absolute inset-0 rounded-2xl bg-primary/20 animate-pulse-ring" />
-            {/* icon tile — matches feature card style (rose gradient) */}
-            <div className="relative flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-primary to-pink-500 text-white shadow-xl shadow-primary/30 ring-1 ring-white/40 backdrop-blur md:h-16 md:w-16">
-              <Icon className="h-6 w-6 md:h-7 md:w-7" />
-            </div>
-          </div>
-        </div>
-      ))}
-    </div>
-  );
-}
-
 export default function HomePage() {
   return (
     <main className="relative min-h-screen overflow-hidden">
@@ -112,12 +57,9 @@ export default function HomePage() {
       </header>
 
       {/* ==================== HERO ==================== */}
-      <section className="relative container py-20 md:py-32">
-        {/* Floating icon orbit — connected to CollabTik via SVG lines */}
-        <FloatingIcons />
-
+      <section className="container py-20 md:py-32">
         <ScrollReveal>
-          <div className="relative z-10 mx-auto max-w-3xl text-center">
+          <div className="mx-auto max-w-3xl text-center">
             <Badge variant="secondary" className="mb-4">Now in open beta</Badge>
             <h1 className="text-4xl font-bold tracking-tight md:text-6xl lg:text-7xl">
               Where TikTok creators meet brands that{" "}
