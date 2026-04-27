@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { stripe } from "@/server/services/stripe";
 import { db } from "@/server/db";
-import { env } from "@/env.mjs";
+import { env } from "@/env";
 
 export const runtime = "nodejs";
 
